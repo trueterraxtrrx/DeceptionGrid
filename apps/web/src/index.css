@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-gray-100 font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { @apply bg-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-gray-600; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-lg p-4;
+  }
+  .btn-primary {
+    @apply bg-accent text-black font-semibold px-4 py-2 rounded-md hover:bg-accent-dim transition-colors text-sm;
+  }
+  .btn-ghost {
+    @apply text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-sm;
+  }
+  .input {
+    @apply bg-bg border border-border rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors w-full;
+  }
+  .badge-critical { @apply px-2 py-0.5 rounded text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30; }
+  .badge-high     { @apply px-2 py-0.5 rounded text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30; }
+  .badge-medium   { @apply px-2 py-0.5 rounded text-xs font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30; }
+  .badge-low      { @apply px-2 py-0.5 rounded text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30; }
+  .badge-open         { @apply px-2 py-0.5 rounded text-xs font-semibold bg-red-500/20 text-red-400; }
+  .badge-investigating { @apply px-2 py-0.5 rounded text-xs font-semibold bg-yellow-500/20 text-yellow-400; }
+  .badge-resolved     { @apply px-2 py-0.5 rounded text-xs font-semibold bg-green-500/20 text-green-400; }
+  .badge-false_positive { @apply px-2 py-0.5 rounded text-xs font-semibold bg-gray-500/20 text-gray-400; }
+  .badge-active   { @apply px-2 py-0.5 rounded text-xs font-semibold bg-green-500/20 text-green-400; }
+  .badge-inactive { @apply px-2 py-0.5 rounded text-xs font-semibold bg-gray-500/20 text-gray-400; }
+}
