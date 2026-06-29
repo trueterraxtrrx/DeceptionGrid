@@ -25,3 +25,4 @@ DeceptionGrid is ready to present as a defensive-only KRYNEX Labs module after t
 - `docs/screenshots/asset-detail.png`
 - `docs/screenshots/events.png`
 - `docs/screenshots/honeytokens.png`
+<!-- Project version: DeceptionGrid V1.1 -->

@@ -36,3 +36,4 @@ def hash_api_key(raw_key: str) -> str:
 
 def verify_api_key(raw_key: str, hashed: str) -> bool:
     return pwd_context.verify(raw_key, hashed)
+# Project version: DeceptionGrid V1.1

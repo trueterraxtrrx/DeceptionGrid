@@ -214,3 +214,4 @@ class DashboardStats(BaseModel):
     critical_alerts: int
     top_source_ips: list[dict]
     severity_distribution: dict
+# Project version: DeceptionGrid V1.1
