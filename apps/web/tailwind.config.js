@@ -22,3 +22,4 @@ export default {
   },
   plugins: [],
 };
+// Project version: DeceptionGrid V1.1

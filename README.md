@@ -1,4 +1,4 @@
-# DeceptionGrid V1.0
+# DeceptionGrid V1.1
 
 Defensive honeypot and deception platform for fake assets, honeytokens, suspicious interaction tracking and SOC alert workflows.
 
@@ -56,6 +56,13 @@ Set `DEMO_MODE=true` and `VITE_DEMO_MODE=true` for public demos. The frontend ca
 
 Demo mode is synthetic only. It does not open real honeypot services, collect real credentials, scan networks, execute payloads or connect to customer infrastructure.
 
+## Public Demo Readiness
+
+- Seeded demo data should stay synthetic and clearly labeled as simulation.
+- Destructive controls should remain disabled or scoped to local demo records before public hosting.
+- Public screenshots and demo copy should avoid implying active production monitoring.
+- Hosted demos should use temporary data stores and rotate demo credentials regularly.
+
 ## Environment Variables
 
 Use `.env.example` as the public-safe template. Do not commit real secrets. Key variables include `DATABASE_URL`, `REDIS_URL`, `JWT_SECRET`, `ENVIRONMENT`, `DEMO_MODE`, `CORS_ALLOWED_ORIGINS`, `VITE_API_URL` and `VITE_DEMO_MODE`.
@@ -112,3 +119,4 @@ These integrations are documented as integration-ready API patterns. They are no
 ## License
 
 MIT.
+<!-- Project version: DeceptionGrid V1.1 -->

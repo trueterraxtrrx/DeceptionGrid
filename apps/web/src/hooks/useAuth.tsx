@@ -46,3 +46,4 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 
 export const useAuth = () => useContext(Ctx);
+// Project version: DeceptionGrid V1.1

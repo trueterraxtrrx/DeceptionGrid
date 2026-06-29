@@ -25,3 +25,4 @@ Safe private extensions are allowed:
 - read-only public demo mode;
 - private SOC dashboards;
 - audit log retention policies.
+<!-- Project version: DeceptionGrid V1.1 -->

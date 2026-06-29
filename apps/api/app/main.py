@@ -12,7 +12,7 @@ from app.routers.dashboard import dashboard_router, audit_router, demo_router
 app = FastAPI(
     title="DeceptionGrid API",
     description="Enterprise Honeypot & Deception Platform by KRYNEX Labs",
-    version="0.1.0",
+    version="1.1.0",
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
 )
@@ -39,3 +39,4 @@ app.include_router(demo_router, prefix="/api/v1")
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "deceptiongrid-api"}
+# Project version: DeceptionGrid V1.1
