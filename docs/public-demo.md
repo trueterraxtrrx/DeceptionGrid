@@ -18,6 +18,12 @@ DeceptionGrid is ready to present as a defensive-only KRYNEX Labs module after t
 - Do not paste real tokens, credentials or logs into screenshots.
 - Keep the positioning as a portfolio/open-source defensive SaaS MVP.
 
+## V1.2 Roadmap Readiness
+
+- Keep public demo controls read-only by default.
+- Scope ingestion keys to synthetic event workflows.
+- Prepare LogForge and Nexus export notes before enabling integration demos.
+
 ## Recommended GitHub Assets
 
 - `docs/screenshots/dashboard.png`
@@ -25,4 +31,4 @@ DeceptionGrid is ready to present as a defensive-only KRYNEX Labs module after t
 - `docs/screenshots/asset-detail.png`
 - `docs/screenshots/events.png`
 - `docs/screenshots/honeytokens.png`
-<!-- Project version: DeceptionGrid V1.1 -->
+<!-- Project version: DeceptionGrid V1.2 -->

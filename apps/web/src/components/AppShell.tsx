@@ -13,4 +13,4 @@ export function AppShell() {
     </div>
   );
 }
-// Project version: DeceptionGrid V1.1
+// Project version: DeceptionGrid V1.2

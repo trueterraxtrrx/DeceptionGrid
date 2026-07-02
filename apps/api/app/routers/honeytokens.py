@@ -38,4 +38,4 @@ def get_honeytoken(ht_id: str, user: User = Depends(get_current_active_user), db
 @router.delete("/{ht_id}", status_code=204)
 def delete_honeytoken(ht_id: str, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     HoneytokenService(db).delete(user.organization_id, user.id, ht_id)
-# Project version: DeceptionGrid V1.1
+# Project version: DeceptionGrid V1.2
