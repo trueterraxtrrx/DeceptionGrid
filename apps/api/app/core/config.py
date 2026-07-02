@@ -47,4 +47,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-# Project version: DeceptionGrid V1.1
+# Project version: DeceptionGrid V1.2

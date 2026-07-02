@@ -140,4 +140,4 @@ def downgrade():
     op.drop_table("organizations")
     for enum in ["user_role","asset_type","asset_status","event_type","event_severity","alert_severity","alert_status","token_type","token_status"]:
         op.execute(f"DROP TYPE IF EXISTS {enum}")
-# Project version: DeceptionGrid V1.1
+# Project version: DeceptionGrid V1.2

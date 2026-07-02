@@ -14,4 +14,4 @@ def get_db():
         yield db
     finally:
         db.close()
-# Project version: DeceptionGrid V1.1
+# Project version: DeceptionGrid V1.2
