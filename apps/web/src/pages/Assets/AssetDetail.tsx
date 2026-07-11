@@ -179,4 +179,4 @@ export function AssetDetailPage() {
     </div>
   );
 }
-// Project version: DeceptionGrid V1.2
+// Project version: DeceptionGrid V1.3

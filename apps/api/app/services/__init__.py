@@ -303,4 +303,4 @@ class DemoSimulatorService:
             metadata_json={"token_prefix": "dg-decoy-demo", "endpoint": "/api/v1/data", "demo": True},
             severity="critical",
         ))
-# Project version: DeceptionGrid V1.2
+# Project version: DeceptionGrid V1.3

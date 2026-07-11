@@ -61,4 +61,4 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-// Project version: DeceptionGrid V1.2
+// Project version: DeceptionGrid V1.3
