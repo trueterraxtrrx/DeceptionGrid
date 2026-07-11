@@ -20,4 +20,4 @@ export default defineConfig({
     },
   },
 });
-// Project version: DeceptionGrid V1.3
+// Project version: DeceptionGrid V1.4

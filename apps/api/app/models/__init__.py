@@ -195,4 +195,4 @@ class AuditLog(Base):
     created_at = Column(DateTime(timezone=True), default=utcnow)
 
     organization = relationship("Organization", back_populates="audit_logs")
-# Project version: DeceptionGrid V1.3
+# Project version: DeceptionGrid V1.4

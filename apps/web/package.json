@@ -1,6 +1,6 @@
 {
   "name": "deceptiongrid-web",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -31,4 +31,4 @@
     "eslint": "^8.57.0"
   }
 }
-# Project version: DeceptionGrid V1.3
+# Project version: DeceptionGrid V1.4
