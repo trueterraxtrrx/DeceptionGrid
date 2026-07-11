@@ -1,4 +1,4 @@
-# DeceptionGrid V1.4
+# DeceptionGrid V1.5
 
 Defensive honeypot and deception platform for fake assets, honeytokens, suspicious interaction tracking and SOC alert workflows.
 
@@ -110,6 +110,7 @@ These integrations are documented as integration-ready API patterns. They are no
 
 ## Roadmap
 
+- Expanded V1.5 roadmap notes for LogForge/Nexus export profiles and private deployment controls.
 - Expanded V1.4 roadmap notes for API-key ingestion screens and scoped event intake planning.
 - Expanded V1.3 roadmap notes for read-only demo controls and synthetic event boundaries.
 - Add V1.2 public demo controls and API-key ingestion readiness notes.
@@ -122,4 +123,4 @@ These integrations are documented as integration-ready API patterns. They are no
 ## License
 
 MIT.
-<!-- Project version: DeceptionGrid V1.4 -->
+<!-- Project version: DeceptionGrid V1.5 -->

@@ -22,4 +22,4 @@
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
-# Project version: DeceptionGrid V1.4
+# Project version: DeceptionGrid V1.5

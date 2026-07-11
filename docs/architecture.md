@@ -31,4 +31,4 @@ Demo simulators call application services to create events and alerts. They do n
 ## Ecosystem Integration Points
 
 DeceptionGrid can expose event and alert data to KRYNEX Nexus, LogForge, SentinelX, VulnScope and ThreatVault through authenticated API integrations or export workers in future versions.
-<!-- Project version: DeceptionGrid V1.4 -->
+<!-- Project version: DeceptionGrid V1.5 -->
