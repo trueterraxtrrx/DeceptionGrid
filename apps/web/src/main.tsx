@@ -8,4 +8,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <App />
   </React.StrictMode>
 );
-// Project version: DeceptionGrid V1.3
+// Project version: DeceptionGrid V1.4

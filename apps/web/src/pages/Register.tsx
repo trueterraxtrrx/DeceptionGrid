@@ -66,4 +66,4 @@ export function RegisterPage() {
     </div>
   );
 }
-// Project version: DeceptionGrid V1.3
+// Project version: DeceptionGrid V1.4

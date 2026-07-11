@@ -48,4 +48,4 @@ def sim_db(user: User = Depends(get_current_active_user), db: Session = Depends(
 @demo_router.post("/simulate/honeytoken-trigger", response_model=EventOut, status_code=201)
 def sim_token(user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     return DemoSimulatorService(db).simulate_honeytoken_trigger(user.organization_id)
-# Project version: DeceptionGrid V1.3
+# Project version: DeceptionGrid V1.4

@@ -53,4 +53,4 @@ Demo simulators only create safe local database events and alerts.
 ## Tenant Isolation
 
 Authenticated resource queries are scoped by the current user's `organization_id`. Integrations should preserve this boundary and avoid cross-organization reads or writes.
-<!-- Project version: DeceptionGrid V1.3 -->
+<!-- Project version: DeceptionGrid V1.4 -->
