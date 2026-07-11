@@ -27,4 +27,4 @@ def test_asset_port_must_be_valid_tcp_port():
 def test_event_ingest_rejects_unknown_event_type():
     with pytest.raises(ValidationError):
         EventIngest(event_type="raw_payload_execution", severity="critical")
-# Project version: DeceptionGrid V1.2
+# Project version: DeceptionGrid V1.3

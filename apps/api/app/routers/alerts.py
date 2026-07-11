@@ -33,4 +33,4 @@ def get_alert(alert_id: str, user: User = Depends(get_current_active_user), db: 
 @router.patch("/{alert_id}/status", response_model=AlertOut)
 def update_alert_status(alert_id: str, req: AlertStatusUpdate, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     return AlertService(db).update_status(user.organization_id, user.id, alert_id, req)
-# Project version: DeceptionGrid V1.2
+# Project version: DeceptionGrid V1.3
