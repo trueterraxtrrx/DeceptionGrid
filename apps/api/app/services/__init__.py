@@ -1,5 +1,8 @@
-﻿import secrets
 import re
+import os
+import secrets
+import subprocess
+from pathlib import Path
 from typing import Optional
 
 from sqlalchemy.orm import Session
@@ -19,7 +22,37 @@ from app.schemas import (
     AssetCreate, AssetUpdate, EventIngest, AlertStatusUpdate,
     HoneytokenCreate, DashboardStats, HoneytokenCreated
 )
+CPP_EVENT_CLASSIFIER_ENV = "DECEPTIONGRID_CPP_EVENT_CLASSIFIER"
+CPP_FORCE_ENV = "DECEPTIONGRID_FORCE_CPP"
+CPP_PAYLOAD_THRESHOLD_BYTES = 4096
 
+
+def _cpp_event_classifier_path() -> Path:
+    suffix = ".exe" if os.name == "nt" else ""
+    return Path(__file__).resolve().parents[2] / "cpp" / "event_classifier" / f"deceptiongrid-event-classifier{suffix}"
+
+
+def _classify_event_cpp(event_type: str, payload_preview: str | None) -> str | None:
+    payload = payload_preview or ""
+    if os.getenv(CPP_FORCE_ENV) != "1" and len(payload.encode("utf-8")) < CPP_PAYLOAD_THRESHOLD_BYTES:
+        return None
+    configured = os.getenv(CPP_EVENT_CLASSIFIER_ENV)
+    binary = Path(configured) if configured else _cpp_event_classifier_path()
+    if not binary.exists():
+        return None
+    try:
+        completed = subprocess.run(
+            [str(binary), event_type],
+            capture_output=True,
+            check=True,
+            input=payload,
+            text=True,
+            timeout=5,
+        )
+        severity = completed.stdout.strip()
+        return severity if severity in {"low", "medium", "high", "critical"} else None
+    except Exception:
+        return None
 
 def _slugify(text: str) -> str:
     slug = re.sub(r"[^\w\s-]", "", text.lower())
@@ -122,6 +155,7 @@ class EventService:
         self.alert_repo = AlertRepository(db)
 
     def ingest(self, org_id: str, req: EventIngest) -> DeceptionEvent:
+        severity = _classify_event_cpp(req.event_type, req.payload_preview) or req.severity
         event = self.repo.create(
             org_id=org_id,
             asset_id=req.asset_id,
@@ -130,17 +164,17 @@ class EventService:
             user_agent=req.user_agent,
             payload_preview=req.payload_preview,
             metadata_json=req.metadata_json or {},
-            severity=req.severity,
+            severity=severity,
         )
         # Auto-create alert for medium+ severity
-        if req.severity in ("medium", "high", "critical"):
+        if severity in ("medium", "high", "critical"):
             title = f"Deception interaction detected: {req.event_type} from {req.source_ip or 'unknown'}"
             self.alert_repo.create(
                 org_id=org_id,
                 asset_id=req.asset_id,
                 event_id=event.id,
                 title=title,
-                severity=req.severity,
+                severity=severity,
             )
         self.db.commit()
         self.db.refresh(event)
@@ -303,4 +337,4 @@ class DemoSimulatorService:
             metadata_json={"token_prefix": "dg-decoy-demo", "endpoint": "/api/v1/data", "demo": True},
             severity="critical",
         ))
-# Project version: DeceptionGrid V1.5
+# Project version: DeceptionGrid V1.6

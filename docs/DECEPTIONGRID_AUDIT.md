@@ -97,4 +97,4 @@ Core pages exist for dashboard, assets, asset detail, events, alerts, honeytoken
 - Add backend integration tests around tenant isolation and simulator behavior.
 - Add API key management endpoints/UI if ingestion keys are needed.
 - Consider renaming `apps/web` to `apps/dashboard` only when ready to update Docker, Vite and docs together.
-<!-- Project version: DeceptionGrid V1.5 -->
+<!-- Project version: DeceptionGrid V1.6 -->

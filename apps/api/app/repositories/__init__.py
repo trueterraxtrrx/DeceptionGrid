@@ -1,4 +1,6 @@
-﻿from datetime import datetime, timedelta, timezone
+from __future__ import annotations
+
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from sqlalchemy import func
@@ -251,4 +253,4 @@ class AuditLogRepository:
         total = q.count()
         items = q.order_by(AuditLog.created_at.desc()).offset(offset).limit(limit).all()
         return items, total
-# Project version: DeceptionGrid V1.5
+# Project version: DeceptionGrid V1.6
