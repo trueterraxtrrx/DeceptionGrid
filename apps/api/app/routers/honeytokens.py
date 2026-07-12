@@ -40,3 +40,4 @@ def delete_honeytoken(ht_id: str, user: User = Depends(get_current_active_user),
     HoneytokenService(db).delete(user.organization_id, user.id, ht_id)
 # Project version: DeceptionGrid V1.6
 
+

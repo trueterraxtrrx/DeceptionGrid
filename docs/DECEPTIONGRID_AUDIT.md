@@ -99,3 +99,4 @@ Core pages exist for dashboard, assets, asset detail, events, alerts, honeytoken
 - Consider renaming `apps/web` to `apps/dashboard` only when ready to update Docker, Vite and docs together.
 <!-- Project version: DeceptionGrid V1.6 -->
 
+

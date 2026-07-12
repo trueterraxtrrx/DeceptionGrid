@@ -44,3 +44,4 @@ def delete_asset(asset_id: str, user: User = Depends(get_current_active_user), d
     AssetService(db).delete(user.organization_id, user.id, asset_id)
 # Project version: DeceptionGrid V1.6
 
+
