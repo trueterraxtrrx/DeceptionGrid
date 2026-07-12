@@ -27,3 +27,4 @@ class ConflictError(AppError):
 # Project version: DeceptionGrid V1.6
 
 
+
