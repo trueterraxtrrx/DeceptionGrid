@@ -43,3 +43,4 @@ docker compose exec api alembic upgrade head
 For public demos, keep `DEMO_MODE=true`, use safe seed data and avoid real customer data, real infrastructure addresses or secrets.
 <!-- Project version: DeceptionGrid V1.6 -->
 
+

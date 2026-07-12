@@ -216,3 +216,4 @@ class DashboardStats(BaseModel):
     severity_distribution: dict
 # Project version: DeceptionGrid V1.6
 
+

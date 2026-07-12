@@ -35,3 +35,4 @@ def update_alert_status(alert_id: str, req: AlertStatusUpdate, user: User = Depe
     return AlertService(db).update_status(user.organization_id, user.id, alert_id, req)
 # Project version: DeceptionGrid V1.6
 
+

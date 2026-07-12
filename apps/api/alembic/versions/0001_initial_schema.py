@@ -142,3 +142,4 @@ def downgrade():
         op.execute(f"DROP TYPE IF EXISTS {enum}")
 # Project version: DeceptionGrid V1.6
 
+

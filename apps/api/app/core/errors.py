@@ -26,3 +26,4 @@ class ConflictError(AppError):
         super().__init__("CONFLICT", message, status.HTTP_409_CONFLICT)
 # Project version: DeceptionGrid V1.6
 
+
