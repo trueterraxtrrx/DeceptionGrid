@@ -1,4 +1,4 @@
-# DeceptionGrid V1.5
+# DeceptionGrid V1.6
 
 Defensive honeypot and deception platform for fake assets, honeytokens, suspicious interaction tracking and SOC alert workflows.
 
@@ -123,4 +123,4 @@ These integrations are documented as integration-ready API patterns. They are no
 ## License
 
 MIT.
-<!-- Project version: DeceptionGrid V1.5 -->
+<!-- Project version: DeceptionGrid V1.6 -->

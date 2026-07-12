@@ -32,4 +32,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
-# Project version: DeceptionGrid V1.5
+apps/api/cpp/**/build/
+apps/api/cpp/**/*.exe
+# Project version: DeceptionGrid V1.6

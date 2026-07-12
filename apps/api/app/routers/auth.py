@@ -24,4 +24,4 @@ def login(req: LoginRequest, db: Session = Depends(get_db)):
 @me_router.get("/me", response_model=UserOut)
 def me(user: User = Depends(get_current_active_user)):
     return user
-# Project version: DeceptionGrid V1.5
+# Project version: DeceptionGrid V1.6
