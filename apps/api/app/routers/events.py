@@ -34,3 +34,4 @@ def ingest_event(req: EventIngest, user: User = Depends(get_current_active_user)
 def get_event(event_id: str, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     return EventService(db).get(user.organization_id, event_id)
 # Project version: DeceptionGrid V1.6
+
