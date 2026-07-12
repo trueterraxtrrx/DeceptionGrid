@@ -14,3 +14,4 @@ Recommended captures:
 
 Screenshots should use demo-safe data only. Do not show real customer names, public infrastructure, real secrets, raw credentials or production hostnames.
 <!-- Project version: DeceptionGrid V1.6 -->
+

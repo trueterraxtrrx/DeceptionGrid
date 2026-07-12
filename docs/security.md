@@ -38,3 +38,4 @@ Future KRYNEX integrations should exchange alerts, logs, indicators and metadata
 - Add structured audit logging for integration actions.
 - Review CORS origins per environment.
 <!-- Project version: DeceptionGrid V1.6 -->
+

@@ -43,3 +43,4 @@ def update_asset(asset_id: str, req: AssetUpdate, user: User = Depends(get_curre
 def delete_asset(asset_id: str, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     AssetService(db).delete(user.organization_id, user.id, asset_id)
 # Project version: DeceptionGrid V1.6
+

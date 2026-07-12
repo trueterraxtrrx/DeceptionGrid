@@ -196,3 +196,4 @@ class AuditLog(Base):
 
     organization = relationship("Organization", back_populates="audit_logs")
 # Project version: DeceptionGrid V1.6
+

@@ -254,3 +254,4 @@ class AuditLogRepository:
         items = q.order_by(AuditLog.created_at.desc()).offset(offset).limit(limit).all()
         return items, total
 # Project version: DeceptionGrid V1.6
+
