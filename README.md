@@ -1,5 +1,4 @@
-# DeceptionGrid V1.6
-
+# DeceptionGrid V1.0
 Defensive honeypot and deception platform for fake assets, honeytokens, suspicious interaction tracking and SOC alert workflows.
 
 ## Product Overview
@@ -110,18 +109,22 @@ These integrations are documented as integration-ready API patterns. They are no
 
 ## Roadmap
 
-- Expanded V1.5 roadmap notes for LogForge/Nexus export profiles and private deployment controls.
-- Expanded V1.4 roadmap notes for API-key ingestion screens and scoped event intake planning.
-- Expanded V1.3 roadmap notes for read-only demo controls and synthetic event boundaries.
-- Add V1.2 public demo controls and API-key ingestion readiness notes.
-- Add read-only public demo controls.
-- Add API key management screens for controlled event ingestion.
-- Add integration export profiles for LogForge and Nexus.
-- Add deployment profiles for private KRYNEX environments.
-- Add tenant-isolation integration tests and rate limits for private deployments.
+### Already implemented
+
+- FastAPI and React public demo for deception assets, events, alerts, honeytokens and audit logs.
+- C++ event-classifier path with forced-path tests and safe fallback behavior.
+- Tenant-scoped APIs, hashed honeytokens and safe local demo simulators.
+- Schema/security tests and production/demo boundary documentation.
+
+### Will be implemented
+
+- Read-only public demo controls and synthetic event boundary improvements.
+- API-key management screens for controlled event ingestion.
+- Integration export profiles for LogForge and KRYNEX Nexus.
+- Tenant-isolation integration tests and private deployment rate limits.
 
 ## License
 
 MIT.
-<!-- Project version: DeceptionGrid V1.6 -->
+<!-- Project version: DeceptionGrid V1.0 -->
 
