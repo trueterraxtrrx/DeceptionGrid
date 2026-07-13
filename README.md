@@ -113,12 +113,13 @@ These integrations are documented as integration-ready API patterns. They are no
 
 - FastAPI and React public demo for deception assets, events, alerts, honeytokens and audit logs.
 - C++ event-classifier path with forced-path tests and safe fallback behavior.
+- C++ payload-boundary classifier for traversal, SQLi and command-execution deception events.
 - Tenant-scoped APIs, hashed honeytokens and safe local demo simulators.
 - Schema/security tests and production/demo boundary documentation.
 
 ### Will be implemented
 
-- Read-only public demo controls and synthetic event boundary improvements.
+- Read-only public demo controls and expanded synthetic event boundary reporting.
 - API-key management screens for controlled event ingestion.
 - Integration export profiles for LogForge and KRYNEX Nexus.
 - Tenant-isolation integration tests and private deployment rate limits.
