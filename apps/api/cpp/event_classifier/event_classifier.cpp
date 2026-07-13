@@ -19,6 +19,15 @@ std::string classify(const std::string& event_type, const std::string& payload) 
     if (text.find("honeytoken") != std::string::npos || text.find("credential") != std::string::npos) {
         return "critical";
     }
+    if (text.find("/etc/passwd") != std::string::npos || text.find("..%2f") != std::string::npos ||
+        text.find("../") != std::string::npos || text.find("union select") != std::string::npos ||
+        text.find(" or 1=1") != std::string::npos) {
+        return "critical";
+    }
+    if (text.find("curl ") != std::string::npos || text.find("wget ") != std::string::npos ||
+        text.find("powershell") != std::string::npos || text.find("cmd.exe") != std::string::npos) {
+        return "high";
+    }
     if (text.find("ssh") != std::string::npos || text.find("database") != std::string::npos || text.find("mysql") != std::string::npos) {
         return "high";
     }

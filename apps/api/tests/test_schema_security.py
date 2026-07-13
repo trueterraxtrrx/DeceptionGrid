@@ -1,6 +1,8 @@
 import pytest
+from pathlib import Path
 from pydantic import ValidationError
 
+from app.services import _classify_event_cpp
 from app.schemas import AssetCreate, EventIngest, RegisterRequest
 
 
@@ -27,7 +29,14 @@ def test_asset_port_must_be_valid_tcp_port():
 def test_event_ingest_rejects_unknown_event_type():
     with pytest.raises(ValidationError):
         EventIngest(event_type="raw_payload_execution", severity="critical")
-# Project version: DeceptionGrid V1.6
 
+
+def test_cpp_event_classifier_escalates_payload_attacks(monkeypatch):
+    monkeypatch.setenv("DECEPTIONGRID_FORCE_CPP", "1")
+    binary = Path(__file__).resolve().parents[1] / "cpp" / "event_classifier" / "build" / "Release" / "deceptiongrid-event-classifier.exe"
+    monkeypatch.setenv("DECEPTIONGRID_CPP_EVENT_CLASSIFIER", str(binary))
+    severity = _classify_event_cpp("http_request", "GET /../../etc/passwd UNION SELECT credential")
+    assert severity == "critical"
+# Project version: DeceptionGrid V1.6
 
 
