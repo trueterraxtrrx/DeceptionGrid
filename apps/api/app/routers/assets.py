@@ -47,3 +47,4 @@ def delete_asset(asset_id: str, user: User = Depends(get_current_active_user), d
 
 
 
+
