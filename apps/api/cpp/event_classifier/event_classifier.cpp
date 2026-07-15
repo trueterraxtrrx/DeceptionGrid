@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -37,14 +38,29 @@ std::string classify(const std::string& event_type, const std::string& payload) 
     return "low";
 }
 
+void write_export_profile(const std::string& profile, const std::string& event_type, const std::string& severity, const std::string& payload) {
+    if (profile == "logforge") {
+        std::cout << "{\"service\":\"deceptiongrid\",\"level\":\"" << severity
+                  << "\",\"message\":\"" << event_type << "\",\"fields\":{\"payload_preview_size\":"
+                  << payload.size() << "}}\n";
+        return;
+    }
+    std::cout << "{\"product\":\"DeceptionGrid\",\"event_type\":\"" << event_type
+              << "\",\"severity\":\"" << severity << "\",\"summary\":\"deception event export\"}\n";
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
-    if (argc != 2) return 2;
+    if (argc != 2 && argc != 4) return 2;
     std::ostringstream buffer;
     buffer << std::cin.rdbuf();
     const std::string input = buffer.str();
     if (input.size() > MAX_PAYLOAD_BYTES) return 3;
+    if (argc == 4 && std::string(argv[1]) == "--export") {
+        write_export_profile(argv[2], argv[3], classify(argv[3], input), input);
+        return 0;
+    }
     std::cout << classify(argv[1], input) << "\n";
     return 0;
 }

@@ -54,6 +54,28 @@ def _classify_event_cpp(event_type: str, payload_preview: str | None) -> str | N
     except Exception:
         return None
 
+
+def _export_event_cpp(profile: str, event_type: str, payload_preview: str | None) -> dict | None:
+    configured = os.getenv(CPP_EVENT_CLASSIFIER_ENV)
+    binary = Path(configured) if configured else _cpp_event_classifier_path()
+    if not binary.exists():
+        return None
+    try:
+        completed = subprocess.run(
+            [str(binary), "--export", profile, event_type],
+            capture_output=True,
+            check=True,
+            input=payload_preview or "",
+            text=True,
+            timeout=5,
+        )
+        import json
+
+        payload = json.loads(completed.stdout)
+        return payload if isinstance(payload, dict) else None
+    except Exception:
+        return None
+
 def _slugify(text: str) -> str:
     slug = re.sub(r"[^\w\s-]", "", text.lower())
     return re.sub(r"[\s_]+", "-", slug).strip("-")[:100]
