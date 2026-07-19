@@ -49,6 +49,14 @@ void write_export_profile(const std::string& profile, const std::string& event_t
               << "\",\"severity\":\"" << severity << "\",\"summary\":\"deception event export\"}\n";
 }
 
+void write_boundary(const std::string& event_type, const std::string& payload) {
+    const std::string severity = classify(event_type, payload);
+    const bool alert = severity == "medium" || severity == "high" || severity == "critical";
+    std::cout << "{\"event_type\":\"" << event_type << "\",\"severity\":\"" << severity
+              << "\",\"creates_alert\":" << (alert ? "true" : "false")
+              << ",\"payload_size\":" << payload.size() << "}\n";
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -59,6 +67,10 @@ int main(int argc, char** argv) {
     if (input.size() > MAX_PAYLOAD_BYTES) return 3;
     if (argc == 4 && std::string(argv[1]) == "--export") {
         write_export_profile(argv[2], argv[3], classify(argv[3], input), input);
+        return 0;
+    }
+    if (argc == 4 && std::string(argv[1]) == "--boundary") {
+        write_boundary(argv[3], input);
         return 0;
     }
     std::cout << classify(argv[1], input) << "\n";
