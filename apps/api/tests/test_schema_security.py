@@ -2,7 +2,7 @@ import pytest
 from pathlib import Path
 from pydantic import ValidationError
 
-from app.services import _classify_event_cpp, _export_event_cpp
+from app.services import _classify_event_cpp, _event_boundary_cpp, _export_event_cpp
 from app.schemas import AssetCreate, EventIngest, RegisterRequest
 
 
@@ -39,6 +39,8 @@ def test_cpp_event_classifier_escalates_payload_attacks(monkeypatch):
     assert severity == "critical"
     exported = _export_event_cpp("logforge", "http_request", "GET /admin")
     assert exported and exported["service"] == "deceptiongrid"
+    boundary = _event_boundary_cpp("http_request", "GET /../../etc/passwd")
+    assert boundary and boundary["creates_alert"] is True
 # Project version: DeceptionGrid V1.6
 
 
