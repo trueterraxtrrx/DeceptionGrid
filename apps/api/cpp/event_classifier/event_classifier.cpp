@@ -57,6 +57,14 @@ void write_boundary(const std::string& event_type, const std::string& payload) {
               << ",\"payload_size\":" << payload.size() << "}\n";
 }
 
+void write_queue(const std::string& event_type, const std::string& payload) {
+    const std::string severity = classify(event_type, payload);
+    const std::string queue = severity == "critical" ? "immediate" :
+                              severity == "high" ? "soc_review" :
+                              severity == "medium" ? "daily_review" : "archive";
+    std::cout << "{\"severity\":\"" << severity << "\",\"queue\":\"" << queue << "\"}\n";
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -71,6 +79,10 @@ int main(int argc, char** argv) {
     }
     if (argc == 4 && std::string(argv[1]) == "--boundary") {
         write_boundary(argv[3], input);
+        return 0;
+    }
+    if (argc == 4 && std::string(argv[1]) == "--queue") {
+        write_queue(argv[3], input);
         return 0;
     }
     std::cout << classify(argv[1], input) << "\n";

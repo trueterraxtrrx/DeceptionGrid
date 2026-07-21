@@ -41,3 +41,4 @@ def get_event(event_id: str, user: User = Depends(get_current_active_user), db: 
 
 
 
+
