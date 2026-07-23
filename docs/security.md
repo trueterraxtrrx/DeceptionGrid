@@ -46,3 +46,4 @@ Future KRYNEX integrations should exchange alerts, logs, indicators and metadata
 
 
 
+

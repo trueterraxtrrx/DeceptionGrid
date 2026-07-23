@@ -65,6 +65,14 @@ void write_queue(const std::string& event_type, const std::string& payload) {
     std::cout << "{\"severity\":\"" << severity << "\",\"queue\":\"" << queue << "\"}\n";
 }
 
+void write_playbook(const std::string& event_type, const std::string& payload) {
+    const std::string severity = classify(event_type, payload);
+    const std::string playbook = severity == "critical" ? "contain-and-investigate" :
+                                 severity == "high" ? "investigate-source" :
+                                 severity == "medium" ? "review-context" : "archive-signal";
+    std::cout << "{\"severity\":\"" << severity << "\",\"playbook\":\"" << playbook << "\"}\n";
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -83,6 +91,10 @@ int main(int argc, char** argv) {
     }
     if (argc == 4 && std::string(argv[1]) == "--queue") {
         write_queue(argv[3], input);
+        return 0;
+    }
+    if (argc == 4 && std::string(argv[1]) == "--playbook") {
+        write_playbook(argv[3], input);
         return 0;
     }
     std::cout << classify(argv[1], input) << "\n";
