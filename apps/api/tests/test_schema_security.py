@@ -2,7 +2,7 @@ import pytest
 from pathlib import Path
 from pydantic import ValidationError
 
-from app.services import _classify_event_cpp, _event_boundary_cpp, _event_queue_cpp, _export_event_cpp
+from app.services import _classify_event_cpp, _event_boundary_cpp, _event_playbook_cpp, _event_queue_cpp, _export_event_cpp
 from app.schemas import AssetCreate, EventIngest, RegisterRequest
 
 
@@ -43,6 +43,8 @@ def test_cpp_event_classifier_escalates_payload_attacks(monkeypatch):
     assert boundary and boundary["creates_alert"] is True
     queue = _event_queue_cpp("http_request", "GET /../../etc/passwd")
     assert queue and queue["queue"] == "immediate"
+    playbook = _event_playbook_cpp("http_request", "GET /../../etc/passwd")
+    assert playbook and playbook["playbook"] == "contain-and-investigate"
 # Project version: DeceptionGrid V1.6
 
 

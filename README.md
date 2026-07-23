@@ -117,12 +117,13 @@ These integrations are documented as integration-ready API patterns. They are no
 - C++ export profile generator for LogForge and Nexus deception event handoff.
 - C++ event-boundary summary for alert creation and payload-size review.
 - C++ event queue helper for immediate, SOC, daily and archive review lanes.
+- C++ playbook helper for critical, high, medium and low deception responses.
 - Tenant-scoped APIs, hashed honeytokens and safe local demo simulators.
 - Schema/security tests and production/demo boundary documentation.
 
 ### Will be implemented
 
-- Read-only public demo controls plus synthetic event boundary and queue reporting in the UI.
+- Read-only public demo controls plus synthetic event boundary, queue and playbook reporting in the UI.
 - API-key management screens for controlled event ingestion.
 - Frontend/API controls for LogForge and KRYNEX Nexus export profiles.
 - Tenant-isolation integration tests and private deployment rate limits.

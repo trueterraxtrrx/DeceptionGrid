@@ -120,6 +120,28 @@ def _event_queue_cpp(event_type: str, payload_preview: str | None) -> dict | Non
     except Exception:
         return None
 
+
+def _event_playbook_cpp(event_type: str, payload_preview: str | None) -> dict | None:
+    configured = os.getenv(CPP_EVENT_CLASSIFIER_ENV)
+    binary = Path(configured) if configured else _cpp_event_classifier_path()
+    if not binary.exists():
+        return None
+    try:
+        completed = subprocess.run(
+            [str(binary), "--playbook", "default", event_type],
+            capture_output=True,
+            check=True,
+            input=payload_preview or "",
+            text=True,
+            timeout=5,
+        )
+        import json
+
+        payload = json.loads(completed.stdout)
+        return payload if isinstance(payload, dict) else None
+    except Exception:
+        return None
+
 def _slugify(text: str) -> str:
     slug = re.sub(r"[^\w\s-]", "", text.lower())
     return re.sub(r"[\s_]+", "-", slug).strip("-")[:100]

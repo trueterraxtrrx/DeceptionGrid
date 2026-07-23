@@ -42,3 +42,4 @@ def update_alert_status(alert_id: str, req: AlertStatusUpdate, user: User = Depe
 
 
 
+
