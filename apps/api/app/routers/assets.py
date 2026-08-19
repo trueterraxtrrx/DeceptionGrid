@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_active_user
+from app.core.deps import get_current_active_user, require_role
 from app.models import User
 from app.schemas import AssetCreate, AssetUpdate, AssetOut, PaginatedResponse
 from app.services import AssetService
@@ -25,7 +25,7 @@ def list_assets(
 
 
 @router.post("", response_model=AssetOut, status_code=201)
-def create_asset(req: AssetCreate, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def create_asset(req: AssetCreate, user: User = Depends(require_role("OWNER", "ADMIN", "ANALYST")), db: Session = Depends(get_db)):
     return AssetService(db).create(user.organization_id, user.id, req)
 
 
@@ -35,12 +35,12 @@ def get_asset(asset_id: str, user: User = Depends(get_current_active_user), db: 
 
 
 @router.patch("/{asset_id}", response_model=AssetOut)
-def update_asset(asset_id: str, req: AssetUpdate, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def update_asset(asset_id: str, req: AssetUpdate, user: User = Depends(require_role("OWNER", "ADMIN", "ANALYST")), db: Session = Depends(get_db)):
     return AssetService(db).update(user.organization_id, user.id, asset_id, req)
 
 
 @router.delete("/{asset_id}", status_code=204)
-def delete_asset(asset_id: str, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def delete_asset(asset_id: str, user: User = Depends(require_role("OWNER", "ADMIN")), db: Session = Depends(get_db)):
     AssetService(db).delete(user.organization_id, user.id, asset_id)
 # Project version: DeceptionGrid V1.6
 

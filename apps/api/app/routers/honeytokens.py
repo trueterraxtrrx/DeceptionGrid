@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_active_user
+from app.core.deps import get_current_active_user, require_role
 from app.models import User
 from app.schemas import HoneytokenCreate, HoneytokenOut, HoneytokenCreated, PaginatedResponse
 from app.services import HoneytokenService
@@ -23,7 +23,7 @@ def list_honeytokens(
 
 
 @router.post("", response_model=HoneytokenCreated, status_code=201)
-def create_honeytoken(req: HoneytokenCreate, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def create_honeytoken(req: HoneytokenCreate, user: User = Depends(require_role("OWNER", "ADMIN", "ANALYST")), db: Session = Depends(get_db)):
     ht, raw_token = HoneytokenService(db).create(user.organization_id, user.id, req)
     out = HoneytokenCreated.model_validate(ht)
     out.raw_token = raw_token
@@ -36,7 +36,7 @@ def get_honeytoken(ht_id: str, user: User = Depends(get_current_active_user), db
 
 
 @router.delete("/{ht_id}", status_code=204)
-def delete_honeytoken(ht_id: str, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def delete_honeytoken(ht_id: str, user: User = Depends(require_role("OWNER", "ADMIN")), db: Session = Depends(get_db)):
     HoneytokenService(db).delete(user.organization_id, user.id, ht_id)
 # Project version: DeceptionGrid V1.6
 

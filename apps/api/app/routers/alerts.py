@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_active_user
+from app.core.deps import get_current_active_user, require_role
 from app.models import User
 from app.schemas import AlertOut, AlertStatusUpdate, PaginatedResponse
 from app.services import AlertService
@@ -31,7 +31,7 @@ def get_alert(alert_id: str, user: User = Depends(get_current_active_user), db: 
 
 
 @router.patch("/{alert_id}/status", response_model=AlertOut)
-def update_alert_status(alert_id: str, req: AlertStatusUpdate, user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
+def update_alert_status(alert_id: str, req: AlertStatusUpdate, user: User = Depends(require_role("OWNER", "ADMIN", "ANALYST")), db: Session = Depends(get_db)):
     return AlertService(db).update_status(user.organization_id, user.id, alert_id, req)
 # Project version: DeceptionGrid V1.6
 

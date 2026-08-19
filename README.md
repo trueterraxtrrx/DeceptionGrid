@@ -120,6 +120,8 @@ These integrations are documented as integration-ready API patterns. They are no
 - C++ playbook helper for critical, high, medium and low deception responses.
 - Tenant-scoped APIs, hashed honeytokens and safe local demo simulators.
 - Schema/security tests and production/demo boundary documentation.
+- Pinned bcrypt backend version to keep passlib password hashing working on fresh installs.
+- Role-based access control on asset, alert and honeytoken mutation routes.
 
 ### Will be implemented
 

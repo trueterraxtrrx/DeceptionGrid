@@ -3,7 +3,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.errors import UnauthorizedError
+from app.core.errors import ForbiddenError, UnauthorizedError
 from app.core.security import decode_token
 from app.models.user import User
 
@@ -27,6 +27,14 @@ def get_current_user(
 
 def get_current_active_user(user: User = Depends(get_current_user)) -> User:
     return user
+
+
+def require_role(*allowed_roles: str):
+    def _require_role(user: User = Depends(get_current_active_user)) -> User:
+        if user.role not in allowed_roles:
+            raise ForbiddenError("You do not have permission to perform this action")
+        return user
+    return _require_role
 # Project version: DeceptionGrid V1.6
 
 
